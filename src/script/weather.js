@@ -52,9 +52,9 @@ function updateWeather(today, tomorrow, dayAfterTomorrow) {
       </div>
       <div class="weather-text">
         <h3>${currentDay}</h3>
-        <p>${today.temp_c}°C</p>
+        <p class="c2">${today.temp_c}°C</p>
       </div>
-      <div class="horizontal-text">
+      <div class="c1">
         <p>${today.condition.text}</p>
       </div>
     </div>
@@ -65,9 +65,9 @@ function updateWeather(today, tomorrow, dayAfterTomorrow) {
       </div>
       <div class="weather-text">
         <h3>${tomorrowsDay}</h3>
-        <p>${tomorrow.avgtemp_c}°C</p>
+        <p class="c2">${tomorrow.avgtemp_c}°C</p>
       </div>
-      <div class="horizontal-text">
+      <div class="c1">
         <p>${tomorrow.condition.text}</p>
       </div>
     </div>
@@ -78,9 +78,9 @@ function updateWeather(today, tomorrow, dayAfterTomorrow) {
       </div>
       <div class="weather-text">
         <h3>${dayAfterTomorrowsDay}</h3>
-        <p>${dayAfterTomorrow.avgtemp_c}°C</p>
+        <p class="c2">${dayAfterTomorrow.avgtemp_c}°C</p>
       </div>
-      <div class="horizontal-text">
+      <div class="c1">
         <p>${dayAfterTomorrow.condition.text}</p>
       </div>
     </div>
