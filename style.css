@@ -1,12 +1,28 @@
 *{
   padding: 0;
   margin: 0;
+  font-family: sans-serif;
 }
 body{
   height: 100vh;
-  background: rgb(113, 113, 131);
+  background-image: url(images/forest.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+h2{
+  font-size: 1rem;
+}
+h3{
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+p{
+  background-color: aliceblue;
+  border-radius: 10px;
+  padding: 5px;
 }
 #time__container{
   display: flex;
@@ -15,4 +31,68 @@ body{
   height: 3rem;
 }
 
-#background__container
+#background__container{
+  height: 3rem;
+  align-self: center;
+}
+#edit__name{
+  align-self: center;
+  font-size: 2rem;
+}
+#card__container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  bottom: 80px;
+
+}
+.card{
+  background-color: rgba(147, 144, 144, 0.582);
+  height: 360px;
+  width:280px;
+  border-radius: 25px;
+  padding: 1.3rem;
+}
+.weather{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.weather-card{
+  height: 60px;
+  width: 100%;
+  margin-bottom: 5px;
+  background-color: rgba(68, 68, 68, 0.381);
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+.weather-font{
+  font-size: 1.3rem;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+}
+.horizontal-text{
+  margin-left: 10px;
+  margin-right: 10px;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.weather-text{
+  width: 100%;
+}
+.weather-img{
+  align-self:center ;
+  justify-self: center;
+}
+.img-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
