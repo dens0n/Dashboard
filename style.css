@@ -180,7 +180,7 @@ h3 {
 }
 
 #background-btn.active img {
-  animation: button-loading-spinner 3s ease;
+  animation: button-loading-spinner 2s ease;
 }
 
 #background-btn.active {
@@ -191,14 +191,11 @@ h3 {
   0% {
     transform: rotate(0turn);
   }
-  33% {
+  50% {
     transform: rotate(1turn);
   }
-  66% {
-    transform: rotate(2turn);
-  }
   100% {
-    transform: rotate(3turn);
+    transform: rotate(2turn);
   }
 }
 

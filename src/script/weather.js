@@ -22,7 +22,7 @@ document
   .addEventListener("click", getUserInput);
 
 //Api länk + nyckel
-let location = "stockholm";
+let location = "Stockholm";
 const apiKey = "10356db26d3e42269ec124314241101";
 const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=4&aqi=no&alerts=no&lang=sv`;
 

@@ -21,7 +21,7 @@ backgroundBtn.addEventListener("click", () => {
   backgroundBtn.classList.add("active");
   setTimeout(() => {
     backgroundBtn.classList.remove("active");
-  }, 3000);
+  }, 2000);
 
   getNewImage(unsplashUrl);
 });
