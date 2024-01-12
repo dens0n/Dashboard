@@ -33,7 +33,6 @@ async function getWeatherData(url) {
     console.log(response);
     const tomorrowsWeatherData = response.data.forecast.forecastday[1].day;
     const dayAfterTomorrowData = response.data.forecast.forecastday[2].day;
-    console.log(currentWeatherData);
     updateWeather(
       currentWeatherData,
       tomorrowsWeatherData,
