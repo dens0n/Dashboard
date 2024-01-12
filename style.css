@@ -5,7 +5,7 @@
 }
 body {
   height: 100vh;
-  background-image: url(images/forest.jpg);
+  background-image: url(./src/images/forest.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -140,7 +140,7 @@ h3 {
   align-items: center;
 }
 #update-location-btn {
-  background-image: url(images/search.png);
+  background-image: url(./src/images/search.png);
   background-size: 25px;
   background-repeat: no-repeat;
   background-position: center;
