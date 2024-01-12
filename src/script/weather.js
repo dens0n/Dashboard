@@ -1,5 +1,5 @@
 import axios from "axios";
-//Ta fram vilken dag det är + imorgon + i övermorgon
+//Ta fram vilken dag det är idag + imorgon + i övermorgon
 const weekdays = [
   "Söndag",
   "Måndag",
@@ -16,34 +16,61 @@ const tomorrowsDay = weekdays[tomorrowIndex];
 const dayAfterTomorrowIndex = (currentDate.getDay() + 2) % 7;
 const dayAfterTomorrowsDay = weekdays[dayAfterTomorrowIndex];
 
-//Hämta container till vädret
-const weatherCard = document.querySelector(".weather");
+//hämta knapp till sökfunktionen
+document
+  .getElementById("update-location-btn")
+  .addEventListener("click", getUserInput);
 
 //Api länk + nyckel
 let location = "stockholm";
 const apiKey = "10356db26d3e42269ec124314241101";
 const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=4&aqi=no&alerts=no&lang=sv`;
 
-async function getWeatherData() {
+async function getWeatherData(url) {
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(url, location);
     const currentWeatherData = response.data.current;
+    console.log(response);
     const tomorrowsWeatherData = response.data.forecast.forecastday[1].day;
     const dayAfterTomorrowData = response.data.forecast.forecastday[2].day;
     console.log(currentWeatherData);
     updateWeather(
       currentWeatherData,
       tomorrowsWeatherData,
-      dayAfterTomorrowData
+      dayAfterTomorrowData,
+      location
     );
   } catch (error) {
     console.error(error);
+    alert("Skriv in en giltig stad");
   }
 }
 
-getWeatherData();
+getWeatherData(url);
 
-function updateWeather(today, tomorrow, dayAfterTomorrow) {
+function getUserInput() {
+  // Hämta värdet från inputfältet
+  let userInput = document.getElementById("userInput").value;
+
+  // Gör första bokstaven stor
+  location =
+    userInput.charAt(0).toUpperCase() + userInput.slice(1).toLowerCase();
+
+  //töm input efter användaren klickat på knappen
+  document.getElementById("userInput").value = "";
+
+  //skicka med den nya länken med valfri location
+  getWeatherData(
+    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=4&aqi=no&alerts=no&lang=sv`,
+    location
+  );
+}
+
+function updateWeather(today, tomorrow, dayAfterTomorrow, location) {
+  //Hämta container till vädret
+  const weatherCard = document.querySelector(".weather");
+
+  //logga ut vädret till användaren
   weatherCard.innerHTML = `
     <h2 class="weather-font">${location}s väder</h2>
     <div class="weather-card">
