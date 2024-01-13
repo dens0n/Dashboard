@@ -10,5 +10,5 @@ setInterval(() => {
         minute: '2-digit',
     });
     date.innerHTML = currentDate.toLocaleDateString('sv-SE', options);
-}, 1000);
+}, 100);
 
