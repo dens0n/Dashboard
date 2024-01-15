@@ -88,7 +88,7 @@ addLinkBtn.addEventListener("click", () => {
 
 //  formatering av input länk
 function formatUrl(inputUrl) {
-  const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+  const urlRegex = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,3}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
   const fullUrl = inputUrl.startsWith("http")
     ? inputUrl
     : `https://${inputUrl}`;
