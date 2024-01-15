@@ -65,7 +65,7 @@ function updateWeather(today, tomorrow, dayAfterTomorrow) {
   const weatherCard = document.querySelector(".weather");
 
   weatherCard.innerHTML = `
-    <h2 class="weather-font">${today.location.name}s väder</h2>
+    <h2 class="card-title">${today.location.name}s väder</h2>
     <div class="weather-card">
       <div class="img-container">
         <img src="${today.current.condition.icon}" alt="" class="weather-img" />

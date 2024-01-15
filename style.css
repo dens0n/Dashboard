@@ -13,6 +13,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+main {
+  display: flex;
+  flex-direction: column;
+}
 
 h2 {
   font-size: 1rem;
@@ -50,27 +54,105 @@ h3 {
 }
 
 #edit-name {
+  background-color: rgba(147, 144, 144, 0.85);
   align-self: center;
-  font-size: 2rem;
+  font-size: 3rem;
+  margin: 2rem;
+  border-radius: 50px;
+  padding: 10px 40px;
 }
 #card-container {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 100px;
 }
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   background-color: rgba(147, 144, 144, 0.85);
   height: 360px;
   width: 280px;
   border-radius: 25px;
   padding: 1.3rem;
   /* box-shadow: 0px 0px 100px 5px rgba(0, 0, 0, 0.5); */
+}
+#links-container {
+  z-index: 1;
+  width: 107%;
+  max-height: 267px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+#links-container::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+#links-container::-webkit-scrollbar-thumb {
+  background: rgba(232, 232, 232, 0.678);
+  border-radius: 15px;
+}
+.favicon {
+  padding: 10px;
+  width: 35px;
+}
+.link-font {
+  font-size: 1rem;
+  margin-left: 10px;
+}
+.remove-link-btn{
+  z-index: 1;
+  background-image: url(./src/images/minus.png);
+  background-color: rgba(255, 255, 255, 0.75);
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 25px;
+  border: 2px solid rgba(0, 0, 0, 0.684);
+}
+.remove-link-btn:hover{
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 2px solid red;
+}
+#title-and-link-coontainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.links-card {
+  cursor: pointer;
+  background-color: rgba(68, 68, 68, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 38px;
+  max-height: 38px;
+  width: 90%;
+  margin-bottom: 8px;
+  border-radius: 20px;
+  border: none;
+  padding: 10px;
+}
+a{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+.links-card:hover {
+  background-color: rgba(68, 68, 68, 0.85);
 }
 .weather {
   display: flex;
@@ -87,7 +169,7 @@ h3 {
   display: flex;
   align-items: center;
 }
-.weather-font {
+.card-title {
   font-size: 1.3rem;
   margin-top: 0.3rem;
   margin-bottom: 1rem;
@@ -103,10 +185,10 @@ h3 {
   width: 180px;
   margin-left: 10px;
   align-self: flex-end;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 .c2 {
-  width: 2.5rem;
+  width: 3rem;
   font-size: 14px;
   background-color: rgba(232, 232, 232, 0.678);
   border-radius: 10px;
@@ -125,7 +207,7 @@ h3 {
   align-items: center;
   justify-content: center;
 }
-#userInput {
+input {
   font-size: 16px;
   background-color: rgba(232, 232, 232, 0.678);
   width: 190px;
@@ -136,9 +218,26 @@ h3 {
   outline: none;
 }
 .input-area {
+  margin-top: 10px;
   margin-left: 35px;
   display: flex;
   align-items: center;
+}
+#add-link-btn {
+  background-image: url(./src/images/plus.png);
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  height: 35px;
+  width: 35px;
+  left: -35px;
+  border: none;
+  border-radius: 25px;
+}
+#add-link-btn:hover {
+  cursor: pointer;
+  background-color: rgba(147, 144, 144, 0.85);
 }
 #update-location-btn {
   background-image: url(./src/images/search.png);

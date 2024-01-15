@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const backgroundBtn = document.getElementById("background-btn");
+
 // Api link + key
 const unsplashUserInput = "";
 const unsplashApiKey = "2GwNzOMDbOc9794UPXcoNjA2hbnT7NXArsgWZbFOLfg";
@@ -35,8 +37,6 @@ async function getNewImage(unsplashUrl) {
     alert("Fel uppstod! Försök igen om ett tag.");
   }
 }
-
-const backgroundBtn = document.getElementById("background-btn");
 
 // ta bort den sparade bilden från localstorage
 function clearLocalStorage() {

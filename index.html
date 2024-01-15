@@ -14,10 +14,20 @@
         <p id="current-date"></p>
       </div>
     </nav>
-    <div id="edit-name">Dennis Dashboard</div>
     <main>
+      <h1 id="edit-name">Dashboard</h1>
       <div id="card-container">
-        <div class="card links">Links</div>
+        <div class="card">
+          <div id="title-and-link-coontainer">
+            <h2 class="card-title">Snabblänkar</h2>
+            <div id="links-container">
+            </div>
+          </div>
+          <div class="input-area">
+            <input type="text" placeholder="Spara länk..." id="linkInput" />
+            <button id="add-link-btn"></button>
+          </div>
+        </div>
         <div class="card">
           <div class="weather"></div>
           <div class="input-area">
@@ -25,9 +35,11 @@
             <button id="update-location-btn"></button>
           </div>
         </div>
-        <div class="card">Random</div>
+        <div class="card">
+          <h2 class="card-title">Random</h2>
+        </div>
         <div class="card note">
-          <h2 class="weather-font">Notes</h2>
+          <h2 class="card-title">Notes</h2>
           <textarea name="" id=""></textarea>
         </div>
       </div>
@@ -36,7 +48,14 @@
       <div id="background-image"></div>
     </div>
     <footer id="background-container">
-      <button id="background-btn"><img src="./src/images/sync.png" alt="reload icon" width="23px" style="margin-right: 10px;">Slumpa ny bakgrund</button>
+      <button id="background-btn">
+        <img
+          src="./src/images/sync.png"
+          alt="reload icon"
+          width="23px"
+          style="margin-right: 10px"
+        />Slumpa ny bakgrund
+      </button>
     </footer>
   </body>
 </html>
