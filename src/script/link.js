@@ -6,11 +6,17 @@ function saveLinksToLocalStorage(links) {
 // ladda sparade länkar från local storage
 function loadAndDisplayLinks() {
   const linkCard = document.getElementById("links-container");
-  const savedLinks = JSON.parse(localStorage.getItem("savedLinks")) || [];
+  const savedLinksString = localStorage.getItem("savedLinks");
 
-  savedLinks.forEach((savedLink) => {
-    displayLinkInput(savedLink);
-  });
+  try {
+    const savedLinks = JSON.parse(savedLinksString) || [];
+    savedLinks.forEach((savedLink) => {
+      displayLinkInput(savedLink);
+    });
+  } catch (error) {
+    console.error("Error parsing savedLinks:", error);
+    // Optionally handle the error or provide a default value
+  }
 }
 
 // visa länken som skrivs in och spara till local storage
@@ -72,7 +78,16 @@ loadAndDisplayLinks();
 
 const addLinkBtn = document.getElementById("add-link-btn");
 
-addLinkBtn.addEventListener("click", () => {
+addLinkBtn.addEventListener("click", handleAddLink);
+document
+  .getElementById("linkInput")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      handleAddLink();
+    }
+  });
+
+function handleAddLink() {
   const linkInput = document.getElementById("linkInput").value.trim();
   const formattedData = formatUrl(linkInput);
   if (formattedData === null) {
@@ -84,11 +99,12 @@ addLinkBtn.addEventListener("click", () => {
     saveLinksToLocalStorage(savedLinks);
     displayLinkInput(formattedData);
   }
-});
+}
 
 //  formatering av input länk
 function formatUrl(inputUrl) {
-  const urlRegex = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,3}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
+  const urlRegex =
+    /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,3}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
   const fullUrl = inputUrl.startsWith("http")
     ? inputUrl
     : `https://${inputUrl}`;
@@ -102,7 +118,9 @@ function formatUrl(inputUrl) {
     .replace(/^www\./, "")
     .replace(/\.(com|se|net|org|no|fi)$/, "");
 
+  /*   const favicon = `https://www.google.com/s2/favicons?domain=${urlObject.hostname}&sz=25`; */
   const favicon = `https://www.google.com/s2/favicons?domain=${urlObject.hostname}&sz=25`;
+  console.log(fullUrl, siteName, favicon);
 
   return {
     link: fullUrl,

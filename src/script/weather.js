@@ -12,7 +12,7 @@ const weekdays = [
 
 let location = localStorage.getItem("location") || "Stockholm";
 
-const apiKey = "10356db26d3e42269ec124314241101";
+const apiKey = import.meta.env.VITE_WEATHER_APIKEY;
 const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=4&aqi=no&alerts=no&lang=sv`;
 
 const currentDate = new Date();

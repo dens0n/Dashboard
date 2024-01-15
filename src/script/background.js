@@ -4,7 +4,7 @@ const backgroundBtn = document.getElementById("background-btn");
 
 // Api link + key
 const unsplashUserInput = "";
-const unsplashApiKey = "2GwNzOMDbOc9794UPXcoNjA2hbnT7NXArsgWZbFOLfg";
+const unsplashApiKey = import.meta.env.VITE_BACKGROUND_APIKEY;
 const unsplashUrl = `https://api.unsplash.com/photos/random/?client_id=${unsplashApiKey}&orientation=landscape&query=${unsplashUserInput}`;
 
 // Uppdatera bakgrundsbild + spara till localstorage
