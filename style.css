@@ -316,3 +316,63 @@ textarea {
   font-weight: 300;
 }
 /* textarea slut */
+
+
+
+
+
+
+.radio-card{
+  width: 250px;
+  display: flex;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+#radio{
+  overflow-y: scroll;
+}
+#radio::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+#radio::-webkit-scrollbar-thumb {
+  background: rgba(232, 232, 232, 0.678);
+  border-radius: 15px;
+}
+.play_controls{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 1rem;
+}
+.radio-img{
+  width: 3rem;
+  padding-right: 0.6rem;
+  border-right: 2px solid black;
+}
+
+.playBtn{
+  background-color: transparent;
+  border: none;
+  width: 25px;
+  height: 25px;
+}
+.pauseBtn{
+  background-color: transparent;
+  border: none;
+  width: 25px;
+  height: 25px;
+}
+
+.playBtn:hover{
+ cursor: pointer;
+}
+.pauseBtn{
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
