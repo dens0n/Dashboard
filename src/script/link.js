@@ -23,7 +23,8 @@ function loadAndDisplayLinks() {
 function displayLinkInput(quickLinkUrl) {
   const linkCard = document.getElementById("links-container");
   document.getElementById("linkInput").value = "";
-  const favicon = `https://www.google.com/s2/favicons?domain=${quickLinkUrl.hostname}&sz=512`;
+  console.log(quickLinkUrl.link)
+  const favicon = `https://www.google.com/s2/favicons?sz=32&domain_url=${quickLinkUrl.link}`;
 
   //skapa kortet med innehåll från länken
   const linkContainer = document.createElement("div");
