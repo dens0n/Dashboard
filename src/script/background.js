@@ -12,7 +12,6 @@ let unsplashUrl = `https://api.unsplash.com/photos/random/?client_id=${unsplashA
 async function getNewImage(unsplashUrl) {
   try {
     const response = await axios.get(unsplashUrl);
-    console.log(response.data);
     const randomImg = response.data.urls;
 
     // 1. Ladda normalstor bild i bakgrunden
@@ -65,7 +64,6 @@ backgroundBtn.addEventListener("click", () => {
 
   const userInputArray = unsplashUserInput.split(/\s+/);
   unsplashUserInput = userInputArray.join(',');
-  console.log(unsplashUserInput)
 
   unsplashUrl = `https://api.unsplash.com/photos/random/?client_id=${unsplashApiKey}&orientation=landscape&query=${unsplashUserInput}`;
 
