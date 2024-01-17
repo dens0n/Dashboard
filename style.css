@@ -268,12 +268,15 @@ input {
 #backgroundInput{
   font-size: 16px;
   background-color: rgba(232, 232, 232, 0.678);
-  width: 210px;
-  height: 23px;
+  width: 190px;
+  height: 25px;
   border: none;
   border-radius: 25px;
   padding: 10px;
   margin-right: 10px;
+}
+#backgroundInput::placeholder {
+  font-size: 15px;
 }
 
 #background-btn {
