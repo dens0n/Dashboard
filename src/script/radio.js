@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "https://api.sr.se/api/v2/channels/?format=json&limit=3";
+const url = "https://api.sr.se/api/v2/channels/?format=json";
 const limit = 4;
 const radioCards = document.getElementById("radio");
 let currentPlayingAudio = null;
@@ -10,7 +10,6 @@ async function radioData() {
     const response = await axios.get(url);
     const radioData = response.data.channels.slice(0, limit);
     radiochannels(radioData);
-    console.log(radioData);
   } catch (error) {
     console.error(error);
     alert("Fel uppstod! Försök igen om ett tag.");
