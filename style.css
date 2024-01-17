@@ -107,18 +107,21 @@ h3 {
   margin-left: 10px;
 }
 .remove-link-btn{
+  position: relative;
+  top: -9px;
+  right: -7px;
   z-index: 1;
   background-image: url(./src/images/minus.png);
   background-color: rgba(255, 255, 255, 0.75);
   background-size: 16px;
   background-repeat: no-repeat;
   background-position: center;
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
   margin-right: 10px;
   border: none;
   border-radius: 25px;
-  border: 2px solid rgba(0, 0, 0, 0.684);
+  border: 1px solid rgba(0, 0, 0, 0.684);
 }
 .remove-link-btn:hover{
   cursor: pointer;
@@ -262,8 +265,19 @@ input {
   height: 5rem;
   align-self: center;
 }
+#backgroundInput{
+  font-size: 16px;
+  background-color: rgba(232, 232, 232, 0.678);
+  width: 210px;
+  height: 23px;
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  margin-right: 10px;
+}
 
 #background-btn {
+  margin-left: 10px;
   display: flex;
   align-items: center;
   font-size: 16px;

@@ -1,11 +1,12 @@
 import axios from "axios";
 
 const backgroundBtn = document.getElementById("background-btn");
+const backgroundInput = document.getElementById("backgroundInput");
 
 // Api link + key
-const unsplashUserInput = "";
+let unsplashUserInput = "";
 const unsplashApiKey = import.meta.env.VITE_BACKGROUND_APIKEY;
-const unsplashUrl = `https://api.unsplash.com/photos/random/?client_id=${unsplashApiKey}&orientation=landscape&query=${unsplashUserInput}`;
+let unsplashUrl = `https://api.unsplash.com/photos/random/?client_id=${unsplashApiKey}&orientation=landscape&query=${unsplashUserInput}`;
 
 // Uppdatera bakgrundsbild + spara till localstorage
 async function getNewImage(unsplashUrl) {
@@ -59,5 +60,14 @@ backgroundBtn.addEventListener("click", () => {
     backgroundBtn.classList.remove("active");
   }, 2000);
   clearLocalStorage();
+
+  unsplashUserInput = backgroundInput.value || "";
+
+  const userInputArray = unsplashUserInput.split(/\s+/);
+  unsplashUserInput = userInputArray.join(',');
+  console.log(unsplashUserInput)
+
+  unsplashUrl = `https://api.unsplash.com/photos/random/?client_id=${unsplashApiKey}&orientation=landscape&query=${unsplashUserInput}`;
+
   getNewImage(unsplashUrl);
 });

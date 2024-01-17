@@ -1,14 +1,16 @@
 import axios from "axios";
 
-const url = "https://api.sr.se/api/v2/channels/?format=json";
+const url = "https://api.sr.se/api/v2/channels/?format=json&limit=3";
+const limit = 4;
 const radioCards = document.getElementById("radio");
 let currentPlayingAudio = null;
 
 async function radioData() {
   try {
     const response = await axios.get(url);
-    const radioData = response.data.channels;
+    const radioData = response.data.channels.slice(0, limit);
     radiochannels(radioData);
+    console.log(radioData);
   } catch (error) {
     console.error(error);
     alert("Fel uppstod! Försök igen om ett tag.");
@@ -26,7 +28,7 @@ function togglePlayPause(event) {
       currentPlayingAudio.pause();
     }
     currentPlayingAudio = audio;
-    
+
     audio.play();
   } else {
     audio.pause();
