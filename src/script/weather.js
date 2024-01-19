@@ -10,10 +10,10 @@ const weekdays = [
   "Lördag",
 ];
 
-let location = localStorage.getItem("location") || "Stockholm";
-
+let location = localStorage.getItem("location") || null;
+const openCageApiKey = import.meta.env.VITE_OPENCAGE_APIKEY;
 const apiKey = import.meta.env.VITE_WEATHER_APIKEY;
-const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=4&aqi=no&alerts=no&lang=sv`;
+let url = "";
 
 const currentDate = new Date();
 const currentDay = weekdays[currentDate.getDay()];
@@ -26,6 +26,35 @@ document
   .getElementById("update-location-btn")
   .addEventListener("click", getUserInput);
 
+// Funktion för att hämta användarens plats och uppdatera "location"
+async function getUserLocation() {
+  if (location) {
+    // Användaren har en sparad plats i local storage
+    url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=4&aqi=no&alerts=no&lang=sv`;
+    return;
+  }
+
+  if (navigator.geolocation) {
+    // Hämta plats genom geolocation om ingen sparad plats finns
+    try {
+      const position = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+      });
+
+      const { latitude, longitude } = position.coords;
+      const response = await axios.get(
+        `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${openCageApiKey}`
+      );
+      const city = response.data.results[0].components.city;
+      location = city.toLowerCase();
+      url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=4&aqi=no&alerts=no&lang=sv`;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
+
+// Funktion för att hämta väderdata
 async function getWeatherData(url) {
   try {
     const response = await axios.get(url);
@@ -43,12 +72,18 @@ async function getWeatherData(url) {
   }
 }
 
-getWeatherData(url);
+// Starta funktionen för att hämta användarens plats och sedan fortsätta med väderdata
+async function startWeatherApp() {
+  await getUserLocation();
+  getWeatherData(url);
+}
 
+// Klickhanterare för att spara input-värde till local storage
 function saveLocationToLocalStorage(newLocation) {
   localStorage.setItem("location", newLocation);
 }
 
+// Klickhanterare för att hämta input från användaren och uppdatera väderdata
 function getUserInput() {
   let userInput = document.getElementById("userInput").value;
   location = userInput.toLowerCase();
@@ -56,9 +91,10 @@ function getUserInput() {
 
   saveLocationToLocalStorage(location);
 
-  getWeatherData(
-    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=4&aqi=no&alerts=no&lang=sv`
-  );
+  // Uppdatera URL:en för att hämta väderdata med den nya platsen
+  url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=4&aqi=no&alerts=no&lang=sv`;
+
+  getWeatherData(url);
 }
 
 function updateWeather(today, tomorrow, dayAfterTomorrow) {
@@ -106,3 +142,5 @@ function updateWeather(today, tomorrow, dayAfterTomorrow) {
     </div>
   `;
 }
+
+startWeatherApp();
