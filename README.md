@@ -6,13 +6,13 @@ En enkel dashboard där användaren kan spara ner länkar, se vädret från valf
 
 För att installera och köra projektet, följ dessa steg:
 
-1. Installera med npm:
+1. **Installera med npm:**
 
    ```bash
    npm install
    ```
 
-2. Skapa en `.env`-fil i roten och lägg till API-nycklar:
+2. **Skapa en `.env`-fil i roten och lägg till API-nycklar:**
 
    ```env
    VITE_WEATHER_APIKEY = "lägg in din api nyckel för UnsplashAPI"
@@ -25,3 +25,9 @@ För att installera och köra projektet, följ dessa steg:
    - [Unsplash API](https://unsplash.com/developers)
    - [WeatherAPI](https://www.weatherapi.com/)
    - [OpenCageAPI](https://opencagedata.com/)
+
+3. **För att starta projektet i webläsaren:**
+
+   ```bash
+      npm run dev
+   ```
